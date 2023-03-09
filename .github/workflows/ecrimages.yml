@@ -25,7 +25,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: assgnmt2webapp_images
-        IMAGE_TAG: v2.0
+        IMAGE_TAG: v1.0
       run: |
         cd WebApp/
         ls -ltra
@@ -39,7 +39,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: assgnmt2mysql_images
-        IMAGE_TAG: v2.0
+        IMAGE_TAG: v1.0
       run: |
         cd MySQL/
         ls -ltra
