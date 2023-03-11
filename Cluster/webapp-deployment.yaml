@@ -1,46 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: webapp
+  labels:
+    app: employees
+    component: frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: employees
+      component: frontend
   template:
     metadata:
       labels:
         app: employees
+        component: frontend
     spec:
       containers:
-      - name: webapp
-        image: "600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2webapp_images:v0.2"
+      - name: webappemp-image
+        image: 600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2webapp_images:v0.2
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
-        - name: DB_HOST
-          value: "mysql"
-        - name: DBPORT
-          value: "3306"
-        - name: DBUSER
-          value: "root""
-        - name: DATABASE
-          value: "employees"
-        - name: APP_COLOR
-          value: lime
-        - name: MYSQL_ROOT_PASSWORD
-          value: "ZXItc2VjcmV0LXBhc3N3b2Q="
-  ---
-  apiVersion: v1
-kind: Service
-metadata:
-  name: webapp-service
-spec:
-  selector:
-    app: employees
-  type: NodePort
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-    nodePort: 30000
+         - name: DBPWD
+           value: ZXItc2VjcmV0LXBhc3N3b2Q=
+         - name: DBUSER
+           value: root
+         - name: DBHOST
+            value: "mysql.database.svc.cluster.local"
+         - name: DBPORT
+            value: "3306"
+         - name: APP_COLOR
+            value: "lime"
+          ports:
+            - containerPort: 8080

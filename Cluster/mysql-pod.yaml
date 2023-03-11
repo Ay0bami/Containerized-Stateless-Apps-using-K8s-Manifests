@@ -4,13 +4,10 @@ metadata:
   name: mysql-pod
 spec:
   containers:
-  - name: mysql
-    image: '600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2mysql_images:v0.2'
+  - name: mysqlcont
+    image: 600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2mysql_images:v0.2
     ports:
     - containerPort: 3306
     env:
-    - name: DATABASE
-      value: "employees"
     - name: MYSQL_ROOT_PASSWORD
-      value: "ZXItc2VjcmV0LXBhc3N3b2Q="
-
+      value: ZXItc2VjcmV0LXBhc3N3b2Q=
