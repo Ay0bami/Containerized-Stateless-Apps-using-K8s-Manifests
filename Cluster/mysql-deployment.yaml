@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: "600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2mysql_images:v0.2"
+        env:
+       - name: DATABASE
+          value: "employees"
+       - name: MYSQL_ROOT_PASSWORD
+          value: "ZXItc2VjcmV0LXBhc3N3b2Q="
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+  ---
+  apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
