@@ -6,7 +6,7 @@ spec:
   containers:
   - name: webapp-serviceimg
     image: 600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2webapp_images:v0.2
-      env:
+    env:
       - name: DBPWD
         value: ZXItc2VjcmV0LXBhc3N3b2Q=
       - name: DBUSER
@@ -17,5 +17,5 @@ spec:
         value: "3306"
       - name: APP_COLOR
         value: "lime"
-      ports:
-        - containerPort: 8080
+    ports:
+      - containerPort: 8080
