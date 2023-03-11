@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  labels:
+    app: employees
+    component: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: employees
+        component: frontend
+    spec:
+      containers:
+      - name: webappemp-image
+        image: 600790893911.dkr.ecr.us-east-1.amazonaws.com/assgnmt2webapp_images:v0.2
+        ports:
+        - containerPort: 80
+        env:
+         - name: DBPWD
+           value: ZXItc2VjcmV0LXBhc3N3b2Q=
+         - name: DBUSER
+           value: root
+         - name: DBHOST
+            value: "mysql.database.svc.cluster.local"
+         - name: DBPORT
+            value: "3306"
+         - name: APP_COLOR
+            value: "lime"
+          ports:
+            - containerPort: 8080
