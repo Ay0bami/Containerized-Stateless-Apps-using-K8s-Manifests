@@ -34,8 +34,4 @@ spec:
          - name: APP_COLOR
             value: "lime"
           ports:
-<<<<<<< HEAD
             - containerPort: 8080
-=======
-            - containerPort: 8080
->>>>>>> 64f6fb9fc3cd94a5538e9b761defc0d4767f92e8

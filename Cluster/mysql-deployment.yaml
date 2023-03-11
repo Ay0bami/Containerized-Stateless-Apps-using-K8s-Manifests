@@ -19,8 +19,4 @@ spec:
         - containerPort: 3306
       env:
       - name: MYSQL_ROOT_PASSWORD
-<<<<<<< HEAD
         value: ZXItc2VjcmV0LXBhc3N3b2Q=
-=======
-        value: ZXItc2VjcmV0LXBhc3N3b2Q=
->>>>>>> 64f6fb9fc3cd94a5538e9b761defc0d4767f92e8

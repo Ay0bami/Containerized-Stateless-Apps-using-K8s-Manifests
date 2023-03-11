@@ -10,8 +10,4 @@ spec:
     - port: 3306
       targetPort: 3306
   selector:
-<<<<<<< HEAD
     app: mysql
-=======
-    app: mysql
->>>>>>> 64f6fb9fc3cd94a5538e9b761defc0d4767f92e8
